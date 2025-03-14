@@ -1,0 +1,43 @@
+import java.util.Random;
+
+public class Bilhete {
+    static final double TARIFA = 5.20;
+    long numero;
+    double saldo;
+    Usuario usuario;
+
+    public Bilhete(Usuario usuario) {
+        numero = gerarNumero();
+        this.usuario = usuario;
+    }
+
+    public long gerarNumero() {
+        Random random = new Random();
+        return random.nextLong(1000, 10000);
+    }
+
+    //Método para carregar o bilhete
+    public void carregar(double valor) {
+        saldo += valor;
+    }
+
+
+    //Método para consultar o saldo do bilhete
+    public double saldo() {
+        return saldo;
+    }
+
+    //Método passar na catraca
+    public String passarCatraca() {
+        double debito = TARIFA / 2;
+        if (usuario.perfil.equalsIgnoreCase("comum")) {
+            debito = TARIFA;
+        }
+
+        if (saldo >= debito) {
+            saldo -= debito;
+            return "Catraca Liberada";
+        }
+        return "Sem saldo";
+    }
+}
