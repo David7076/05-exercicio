@@ -23,16 +23,15 @@ public class Bilhete {
 
 
     //Método para consultar o saldo do bilhete
-    public double saldo() {
+    public double Consultarsaldo() {
         return saldo;
     }
 
     //Método passar na catraca
     public String passarCatraca() {
         double debito = TARIFA / 2;
-        if (usuario.perfil.equalsIgnoreCase("comum")) {
+        if (usuario.perfil.equalsIgnoreCase("comum"))
             debito = TARIFA;
-        }
 
         if (saldo >= debito) {
             saldo -= debito;
